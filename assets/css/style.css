@@ -1,0 +1,17 @@
+/* Color scheme*/
+:root{
+    --darkest: black;
+    --darker: rgb(9, 9, 73);
+    --dark: blue;
+    --medium: cornflowerblue;
+    --light: lightblue;
+    --lighter: silver;
+    --lightest: ivory;
+}
+
+/* Content highlight and background colors*/
+::selection{
+    background-color: var(--lighter);
+    color: var(--darkest);
+}
+
