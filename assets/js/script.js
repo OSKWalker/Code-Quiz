@@ -7,6 +7,234 @@ const resultsAreaEl = document.getElementById("resultsArea")
 const startButtonEl = document.getElementById("startButton");
 const scoreButtonEl = document.getElementById("scoreButton");
 const submitButtonEl = document.getElementById("submitButton");
+const quizQuestions = [
+    
+    {
+        question: "Question 1?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 2?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "B"
+    
+    },
+
+    {
+        question: "Question 3?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "B"
+    
+    },
+
+    {
+        question: "Question 4?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 5?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "C"
+    
+    },
+
+    {
+        question: "Question 6?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 7?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "D"
+    
+    },
+
+    {
+        question: "Question 8?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 9?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "B"
+    
+    },
+
+    {
+        question: "Question 10?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "B"
+    
+    },
+
+    {
+        question: "Question 11?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 12?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "D"
+    
+    },
+
+    {
+        question: "Question 13?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "B"
+    
+    },
+
+    {
+        question: "Question 14?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "A"
+    
+    },
+
+    {
+        question: "Question 15?",
+        
+        answers: {
+            
+            A: "Answer A",
+            B: "Answer B",
+            C: "Answer C",
+            D: "Answer D"
+        },
+
+        correctAnswer: "C"
+    
+    }
+
+];
 
 
 let secondsLeft = 0;
