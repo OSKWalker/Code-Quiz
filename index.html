@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,47 +10,68 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css"> 
 </head>
-<body class="d-flex min-vh-100 container-fluid">
 
-    <section id="scoreBar" class="row border border-primary">
+<body>
 
-        <div class="row justify-content-between border border-secondary">
+    <main class="d-flex min-vh-100 position-relative container-fluid">
+
+        <div id="scoreBarContainer" class="container min-vw-100 position-absolute">
             
-            <div id="scoreView" class="col border border-success">
-
-                <h6>VIEW HIGH SCORES</h6>
-
-            </div>
-            
-            <div id="timerSpace" class="col border border-danger">
+            <section id="scoreBar" class="border border-primary">
                 
-                <h6>TIME: </h6>
+                <div class="row border border-secondary">
+                    
+                    <div id="scoreView" class="col-6 border border-success">
+                        
+                        <button id="viewScoresButton">VIEW HIGH SCORES</button>
+                    
+                    </div>
+                    
+                    <div id="timerSpace" class="col-6 border border-danger">
+                        
+                        <h6>TIME: </h6>
+                        
+                        <div id="timer" class="float-right"></div>
+
+                    </div>
                 
-                <div id="timer"></div>
-
-            </div>
-        
-        </div>
-
-    </section>
-
-    <section id="quizSpace" class="row border border-warning my-auto">
-        
-        <h1 id="title" class="row border border-info">Code Quiz Challenge</h1>
-        
-        <div id="quizArea" class="row border border-dark">
-
-
-        </div>
-        
-        <div id="start" class="row border border-primary">
+                </div>
             
-            <h3 class="border border-secondary">START QUIZ</h3>
+            </section>
         
         </div>
+
+        <div id="quizSpaceContainer" class="container min-vw-100 position-absolute">
+            
+            <section id="quizSpace" class="border border-warning my-auto">
+                
+                <div class="row">
+                    
+                    <h1 id="quizTitle" class="border border-info">Code Quiz Challenge</h1>
+                    
+                    <div id="quizArea" class="col-12 border border-dark"></div>
+
+                    <div id="resultsArea" class="col-12 border border-light"></div>
+                    
+                    <div id="quizControls" class="col border border-primary">
+                        
+                        <button id="startButton" class="border border-secondary">START QUIZ</button>
+
+                        <button id="scoreButton" class="border border-secondary">SCORE</button>
+
+                        <button id="submitButton" class="border border-secondary">SUBMIT</button>
+                    
+                    </div>
+                
+                </div>
+            
+            </section>
+        
+        </div>
+        
+        <script src="./assets/js/script.js"></script>
     
-    </section>
+    </main>
 
-    <script src="./assets/js/script.js"></script>
 </body>
 </html>
