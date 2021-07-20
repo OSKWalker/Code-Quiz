@@ -236,8 +236,9 @@ const quizQuestions = [
 
 ];
 
-
+let highScores = [];
 let secondsLeft = 0;
+let questionCounter = 0;
 
 function countDown() {
     // Sets interval in variable
@@ -264,31 +265,77 @@ function endGame() {
     gameOver.textContent = "GAME OVER!";
     gameOver.setAttribute("style", "font-weight: bold");
     quizAreaEl.appendChild(gameOver);
+    showScoreButton();
+    return;
   
   }
 // Function to initiate the quiz and start the timer
 function startQuiz(){
 
-    secondsLeft = 5;    
+    secondsLeft = 5;
+    questionCounter = 0;
 
-    countDown();
-    viewScoreBar();    
+    hideStartButton();
+    viewScoreBar();
+    countDown();    
+    generateQuestion();    
 
 }
 
-function showStart(){
+function showTime(){
+
+    timerSpaceEl.style.display = "initial";
+
+};
+
+function hideTime(){
+
+    timerSpaceEl.style.display = "none";
+    
+};
+
+function showStartButton(){
 
     startButtonEl.style.display = "initial";
 
 };
 
-function hideStart(){
+function hideStartButton(){
 
     startButtonEl.style.display = "none";
     
 };
 
+function showScoreButton(){
+
+    scoreButtonEl.style.display = "initial";
+
+};
+
+function hideScoreButton(){
+
+    scoreButtonEl.style.display = "none";
+    
+};
+
+function showSubmitButton(){
+
+    submitButtonEl.style.display = "initial";
+
+};
+
+function hideSubmitButton(){
+
+    submitButtonEl.style.display = "none";
+    
+};
+
 function generateQuestion(){
+
+    if(questionCounter>=quizQuestions.length){
+
+        endGame();
+    }
 
 };
 
@@ -313,6 +360,11 @@ function hideScoreBar(){
 function showScores(){
 
     hideScoreBar();
+
+    hideScoreButton();
+    
+    showSubmitButton();
+
 };
 
 // Function to save scores
@@ -344,7 +396,7 @@ function saveScore(event){
 }*/
 
 // Adds requisite event listeners
-function eventListeners(){
+function setEventListeners(){
 
 // Click event to view high scores
 viewScoreButtonEl.addEventListener("click", viewScores);
@@ -363,9 +415,23 @@ submitButtonEl.addEventListener("click", saveScores);
 // Initializing function
 function init(){
 
-    hideScoreBar();
+    if(highScores===[]){
+        
+        hideTime();
 
-    eventListeners();
+    }else{
+        
+        hideScoreBar();
+
+    }
+
+    showStartButton();
+    
+    hideScoreButton();
+
+    hideSubmitButton();
+
+    setEventListeners();
 
     quizAreaEl.textContent = "ARE YOU READY TO TEST YOUR KNOWLEDGE OF GENERAL CODING TRIVIA?"
 
