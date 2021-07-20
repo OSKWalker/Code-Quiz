@@ -246,18 +246,19 @@ function countDown() {
       timerEl.textContent = secondsLeft;
   
       if(secondsLeft === 0) {
+
         // Stops execution of action at set interval
         clearInterval(timerInterval);
 
         // Calls function to create and append image
-        sendMessage();
+        endGame();
       }
   
     }, 1000);
   }
 
   // Function to create and append "GAME OVER! message"
-function sendMessage() {
+function endGame() {
     timerEl.textContent = "";
     var gameOver = document.createElement("h1");
     gameOver.textContent = "GAME OVER!";
@@ -266,30 +267,58 @@ function sendMessage() {
   
   }
 // Function to initiate the quiz and start the timer
-  function startQuiz(){
+function startQuiz(){
 
-    secondsLeft = 5;
+    secondsLeft = 5;    
 
     countDown();
+    viewScoreBar();    
 
-  }
+}
 
-// Function to view scores
-function viewScores(){}
+function showStart(){
 
-// Function to hide scores
-function hideScores(){};
+    startButtonEl.style.display = "initial";
+
+};
+
+function hideStart(){
+
+    startButtonEl.style.display = "none";
+    
+};
+
+function generateQuestion(){
+
+};
+
+// Toggle high score viewing
+function viewScores(){};
+
+// Function to view scorebar
+function viewScoreBar(){
+
+    scoreBarEl.style.display = "initial";
+
+};
+
+// Function to hide scorebar
+function hideScoreBar(){  
+    
+    scoreBarEl.style.display = "none";
+
+};
 
 // Function to show scores
 function showScores(){
 
-    viewScores();
+    hideScoreBar();
 };
 
 // Function to save scores
 function saveScores(){
 
-    hideScores();
+    init();
 
 };
 /*
@@ -314,6 +343,9 @@ function saveScore(event){
     localStorage.setItem("scoreHistory",JSON.stringify(savedScores));
 }*/
 
+// Adds requisite event listeners
+function eventListeners(){
+
 // Click event to view high scores
 viewScoreButtonEl.addEventListener("click", viewScores);
 
@@ -325,3 +357,19 @@ scoreButtonEl.addEventListener("click", showScores);
 
 // Click event to save initials and score
 submitButtonEl.addEventListener("click", saveScores);
+
+};
+
+// Initializing function
+function init(){
+
+    hideScoreBar();
+
+    eventListeners();
+
+    quizAreaEl.textContent = "ARE YOU READY TO TEST YOUR KNOWLEDGE OF GENERAL CODING TRIVIA?"
+
+};
+
+// Execute the initializing function
+init();
