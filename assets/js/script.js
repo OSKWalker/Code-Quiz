@@ -2,6 +2,7 @@ const scoreBarEl = document.getElementById("scoreBar");
 const viewScoreButtonEl = document.getElementById("viewScoresButton");
 const timerSpaceEl = document.getElementById("timerSpace");
 const timerEl = document.getElementById("timer");
+const quizTitleEl = document.getElementById("quizTitle");
 const quizAreaEl = document.getElementById("quizArea");
 const resultsAreaEl = document.getElementById("resultsArea")
 const startButtonEl = document.getElementById("startButton");
@@ -239,12 +240,16 @@ const quizQuestions = [
 let highScores = [];
 let secondsLeft = 0;
 let questionCounter = 0;
+let answer = false;
+let thisQuestion = "";
+let theseAnswers = null;
+let answerKey = [];
 
 function countDown() {
     // Sets interval in variable
     var timerInterval = setInterval(function() {
       secondsLeft--;
-      timerEl.textContent = secondsLeft;
+      timerEl.innerText = secondsLeft;
   
       if(secondsLeft === 0) {
 
@@ -271,14 +276,14 @@ function endGame() {
   }
 // Function to initiate the quiz and start the timer
 function startQuiz(){
-
-    secondsLeft = 5;
-    questionCounter = 0;
-
+    
     hideStartButton();
+    hideQuizTitle();
     viewScoreBar();
-    countDown();    
-    generateQuestion();    
+    secondsLeft = 5;
+    countDown();
+    questionCounter = 0;        
+    getQuestion();    
 
 }
 
@@ -292,6 +297,18 @@ function hideTime(){
 
     timerSpaceEl.style.display = "none";
     
+};
+
+function showQuizTitle(){
+
+    quizTitleEl.style.display = "initial";
+
+};
+
+function hideQuizTitle(){
+
+    quizTitleEl.style.display = "none";
+
 };
 
 function showStartButton(){
@@ -330,12 +347,51 @@ function hideSubmitButton(){
     
 };
 
-function generateQuestion(){
+function getQuestion(){
+
+    quizAreaEl.innerHTML = "";
 
     if(questionCounter>=quizQuestions.length){
 
         endGame();
-    }
+    
+    };
+
+    const questionIndex = questionCounter;
+    var questionSpace = document.createElement("h1");
+    questionSpace.innerHTML = quizQuestions[questionIndex].question;
+    quizAreaEl.appendChild(questionSpace);
+    theseAnswers = quizQuestions[questionIndex].answers;
+
+    answerKey = Object.keys(theseAnswers);
+    console.log(answerKey);
+    
+    for(let i=0; i < answerKey.length; i++){
+        
+        let answerIndex = answerKey[i];
+        var answerSpace = document.createElement("ul");
+        var choice = document.createElement("li");
+        choice.innerText = theseAnswers[answerIndex];
+        answerSpace.appendChild(choice);
+        quizAreaEl.appendChild(answerSpace);
+    };    
+    
+    
+
+
+
+    questionCounter++;
+
+    
+        
+    
+        
+
+    
+
+
+
+
 
 };
 
@@ -362,7 +418,7 @@ function showScores(){
     hideScoreBar();
 
     hideScoreButton();
-    
+
     showSubmitButton();
 
 };
@@ -370,10 +426,7 @@ function showScores(){
 // Function to save scores
 function saveScores(){
 
-    init();
-
-};
-/*
+    /*
 // Capture contents of localstorage
 
 let savedScores = JSON.parse(localStorage.getItem("scoreHistory"));
@@ -392,8 +445,12 @@ function saveScore(event){
         userScore: secondsLeft
     };
     savedScores.push(userScore);
-    localStorage.setItem("scoreHistory",JSON.stringify(savedScores));
+    localStorage.setItem("scoreHistory", JSON.stringify(savedScores));
 }*/
+
+    init();
+
+};
 
 // Adds requisite event listeners
 function setEventListeners(){
@@ -424,6 +481,8 @@ function init(){
         hideScoreBar();
 
     }
+
+    showQuizTitle();
 
     showStartButton();
     
