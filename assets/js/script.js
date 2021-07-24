@@ -21,7 +21,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -36,7 +36,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "B"
+        correctAnswer: "Answer B"
     
     },
 
@@ -51,7 +51,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "B"
+        correctAnswer: "Answer B"
     
     },
 
@@ -66,7 +66,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -81,7 +81,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "C"
+        correctAnswer: "Answer C"
     
     },
 
@@ -96,7 +96,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -111,7 +111,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "D"
+        correctAnswer: "Answer D"
     
     },
 
@@ -126,7 +126,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -141,7 +141,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "B"
+        correctAnswer: "Answer B"
     
     },
 
@@ -156,7 +156,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "B"
+        correctAnswer: "Answer B"
     
     },
 
@@ -171,7 +171,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -186,7 +186,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "D"
+        correctAnswer: "Answer D"
     
     },
 
@@ -201,7 +201,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "B"
+        correctAnswer: "Answer B"
     
     },
 
@@ -216,7 +216,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "A"
+        correctAnswer: "Answer A"
     
     },
 
@@ -231,7 +231,7 @@ const quizQuestions = [
             D: "Answer D"
         },
 
-        correctAnswer: "C"
+        correctAnswer: "Answer C"
     
     }
 
@@ -239,7 +239,7 @@ const quizQuestions = [
 
 let highScores = [];
 let secondsLeft = 0;
-let questionCounter = 0;
+let questionIndex = 0;
 let answer = false;
 let thisQuestion = "";
 let theseAnswers = null;
@@ -263,9 +263,10 @@ function countDown() {
     }, 1000);
   }
 
-  // Function to create and append "GAME OVER! message"
+// Function to create and append "GAME OVER! message"
 function endGame() {
     timerEl.textContent = "";
+    quizAreaEl.innerHTML = "";
     var gameOver = document.createElement("h1");
     gameOver.textContent = "GAME OVER!";
     gameOver.setAttribute("style", "font-weight: bold");
@@ -348,52 +349,93 @@ function hideSubmitButton(){
 };
 
 function getQuestion(){
-
+    
+    // Clears the quiz space
     quizAreaEl.innerHTML = "";
 
-    if(questionCounter>=quizQuestions.length){
+    // Ends game if there are no more questions
+    if(questionIndex>=quizQuestions.length){
 
         endGame();
     
     };
 
-    const questionIndex = questionCounter;
+    // Displays the question
     var questionSpace = document.createElement("h1");
     questionSpace.innerHTML = quizQuestions[questionIndex].question;
     quizAreaEl.appendChild(questionSpace);
     theseAnswers = quizQuestions[questionIndex].answers;
 
     answerKey = Object.keys(theseAnswers);
-    console.log(answerKey);
-    
+
+    // Displays the answer choices    
     for(let i=0; i < answerKey.length; i++){
         
         let answerIndex = answerKey[i];
         var answerSpace = document.createElement("ul");
         var choice = document.createElement("li");
-        choice.innerText = theseAnswers[answerIndex];
+        var selection = document.createElement("button");
+        choice.innerText = answerIndex + ": ";
+        selection.innerText = theseAnswers[answerIndex];
+        choice.appendChild(selection);
         answerSpace.appendChild(choice);
         quizAreaEl.appendChild(answerSpace);
-    };    
-    
-    
+    };
 
-
-
-    questionCounter++;
-
-    
-        
-    
-        
-
-    
-
-
-
-
+    allowSelection();
 
 };
+
+// Allow user to select an answer    
+function allowSelection(){
+
+    quizAreaEl.addEventListener('click', function(event){
+
+        event.preventDefault(); 
+        let selected = event.target;
+        
+        if(selected.matches("button")===true){
+
+            var userSelection = selected.innerText;
+
+            checkAnswer(userSelection);
+
+        }else{
+
+            return;
+        };
+
+    });
+
+};
+
+// Checks for correct answer
+function checkAnswer(userSelection){    
+    
+    var correct = quizQuestions[questionIndex].correctAnswer;
+
+    if (userSelection !== correct){
+        
+        console.log("wrong");
+    
+    }else{
+        
+        console.log("correct");
+    
+    };
+
+    nextQuestion();
+
+}
+
+function nextQuestion(){
+
+    
+    console.log(questionIndex);
+
+    getQuestion();
+
+}
 
 // Toggle high score viewing
 function viewScores(){};
