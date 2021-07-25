@@ -1,5 +1,5 @@
 const scoreBarEl = document.getElementById("scoreBar");
-const viewScoreButtonEl = document.getElementById("viewScoresButton");
+const viewScoresButtonEl = document.getElementById("viewScoresButton");
 const timerSpaceEl = document.getElementById("timerSpace");
 const timerEl = document.getElementById("timer");
 const quizTitleEl = document.getElementById("quizTitle");
@@ -249,15 +249,21 @@ function startQuiz() {
 
   hideQuizTitle();
 
-  viewScoreBar();
+  hideViewScoresButton();
+
+  hideHighScoresArea();
+
+  showTime();
 
   secondsLeft = 5;
 
-  countDown();
+  showQuizArea();
 
   questionIndex = 0;
 
   getQuestion();
+
+  countDown();
 }
 
 // Display the timer
@@ -268,6 +274,16 @@ function showTime() {
 // Hide the timer
 function hideTime() {
   timerSpaceEl.style.display = "none";
+}
+
+// Display the high scores button
+function showViewScoresButton() {
+  viewScoresButtonEl.style.visibility = "visible";
+}
+
+// Hide the high scores button
+function hideViewScoresButton() {
+  viewScoresButtonEl.style.visibility = "hidden";
 }
 
 // Display the quiz title
@@ -288,6 +304,16 @@ function showQuizArea() {
 // Hide quiz area
 function hideQuizArea() {
   quizAreaEl.style.display = "none";
+}
+
+// Display high scores area
+function showHighScoresArea() {
+  highScoresAreaEl.style.display = "initial";
+}
+
+// Hide high scores area
+function hideHighScoresArea() {
+  highScoresAreaEl.style.display = "none";
 }
 
 // Display the start button
@@ -381,18 +407,16 @@ function checkAnswer(userSelection) {
 
   userAlert.setAttribute(
     "style",
-    "font-size: 48px font-weight: bold font-style: italics"
+    "font-size: 48px font-weight: bold font-style: italics opacity: 0 transition: 2s"
   );
 
   resultsAreaEl.appendChild(userAlert);
 
-  /*
-
-    setTimeout(() => {
-
-        quizAreaEl.la
-        
-    }, 500);*/
+  setTimeout(() => {
+    while (resultsAreaEl.firstChild) {
+      resultsAreaEl.removeChild(resultsAreaEl.firstChild);
+    }
+  }, 500);
 
   nextQuestion();
 }
@@ -414,6 +438,15 @@ function nextQuestion() {
 
 // Toggle high score viewing
 function viewScores() {
+  if (highScoresAreaEl.style.display === "none") {
+    showHighScoresArea();
+    hideQuizArea();
+    hideQuizTitle();
+  } else {
+    hideHighScoresArea();
+    showQuizTitle();
+    showQuizArea();
+  }
   var arr = [
     { userInitials: "AAA", userScore: 48 },
 
@@ -435,7 +468,7 @@ function viewScores() {
 }
 
 // Function to view scorebar
-function viewScoreBar() {
+function showScoreBar() {
   scoreBarEl.style.display = "initial";
 }
 
@@ -451,11 +484,32 @@ function showScores() {
   hideScoreButton();
 
   hideQuizArea();
-  /*
-    var scoreText = document.createElement("h1");
-    scoreText.innerText = "YOUR SCORE IS: " + secondsLeft + "!";
-    scoreText.setAttribute("style", "font-weight: bold");
-    resultsAreaEl.appendChild(scoreText);*/
+
+  showHighScoresArea();
+
+  var scoreText = document.createElement("h1");
+  scoreText.innerText = "YOUR SCORE IS: " + secondsLeft + "!";
+  scoreText.setAttribute("style", "font-weight: bold");
+  resultsAreaEl.appendChild(scoreText);
+
+  var arr = [
+    { userInitials: "AAA", userScore: 48 },
+
+    { userInitials: "MMM", userScore: 36 },
+
+    { userInitials: "ZZZ", userScore: 24 },
+  ];
+
+  tableBodyEl.innerHTML = "";
+
+  arr.forEach(function (score) {
+    var tRow = document.createElement("tr");
+    var tContent = `<td>${score.userInitials}</td><td>${score.userScore}</td>`;
+    tRow.innerHTML = tContent;
+    tableBodyEl.appendChild(tRow);
+  });
+
+  //highScoresTableEl
 
   showSubmitButton();
 }
@@ -483,6 +537,13 @@ function saveScore(event){
     savedScores.push(userScore);
     localStorage.setItem("scoreHistory", JSON.stringify(savedScores));
 }*/
+  setTimeout(() => {
+    hideHighScoresArea();
+  }, 5000);
+
+  while (resultsAreaEl.firstChild) {
+    resultsAreaEl.removeChild(resultsAreaEl.firstChild);
+  }
 
   init();
 }
@@ -490,7 +551,7 @@ function saveScore(event){
 // Adds requisite event listeners
 function setEventListeners() {
   // Click event to view high scores
-  viewScoreButtonEl.addEventListener("click", viewScores);
+  viewScoresButtonEl.addEventListener("click", viewScores);
 
   // Click event to start the quiz
   startButtonEl.addEventListener("click", startQuiz);
@@ -504,9 +565,17 @@ function setEventListeners() {
 
 // Initializing function
 function init() {
+  showScoreBar();
+
+  showViewScoresButton();
+
   hideTime();
 
   showQuizTitle();
+
+  showQuizArea();
+
+  hideHighScoresArea();
 
   showStartButton();
 
