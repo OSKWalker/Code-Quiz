@@ -247,11 +247,11 @@ let answerKey = [];
 
 function countDown() {
     // Sets interval in variable
-    var timerInterval = setInterval(function() {
+    var timerInterval = setInterval(function(){
       secondsLeft--;
       timerEl.innerText = secondsLeft;
   
-      if(secondsLeft === 0) {
+      if(secondsLeft <= 0) {
 
         // Stops execution of action at set interval
         clearInterval(timerInterval);
@@ -283,7 +283,7 @@ function startQuiz(){
     viewScoreBar();
     secondsLeft = 5;
     countDown();
-    questionCounter = 0;        
+    questionIndex = 0;        
     getQuestion();    
 
 }
@@ -375,23 +375,11 @@ function getQuestion(){
         var answerSpace = document.createElement("ul");
         var choice = document.createElement("li");
         var selection = document.createElement("button");
-        choice.innerText = answerIndex + ": ";
-        selection.innerText = theseAnswers[answerIndex];
-        choice.appendChild(selection);
-        answerSpace.appendChild(choice);
-        quizAreaEl.appendChild(answerSpace);
-    };
+        selection.addEventListener('click', function(event){
 
-    allowSelection();
+            event.preventDefault();
+            event.stopPropagation();
 
-};
-
-// Allow user to select an answer    
-function allowSelection(){
-
-    quizAreaEl.addEventListener('click', function(event){
-
-        event.preventDefault(); 
         let selected = event.target;
         
         if(selected.matches("button")===true){
@@ -403,9 +391,15 @@ function allowSelection(){
         }else{
 
             return;
+        
         };
-
     });
+        choice.innerText = answerIndex + ": ";
+        selection.innerText = theseAnswers[answerIndex];
+        choice.appendChild(selection);
+        answerSpace.appendChild(choice);
+        quizAreaEl.appendChild(answerSpace);
+    };
 
 };
 
@@ -417,10 +411,12 @@ function checkAnswer(userSelection){
     if (userSelection !== correct){
         
         console.log("wrong");
+        secondsLeft-=4;
     
     }else{
         
         console.log("correct");
+        secondsLeft+=2;
     
     };
 
@@ -428,14 +424,24 @@ function checkAnswer(userSelection){
 
 }
 
+// Generates next question
 function nextQuestion(){
 
+    questionIndex++;
     
-    console.log(questionIndex);
+    if(questionIndex>=quizQuestions.length || secondsLeft <= 0){
 
-    getQuestion();
+        endGame();
 
-}
+    }else{
+        
+        getQuestion();
+
+    }
+
+    
+
+};
 
 // Toggle high score viewing
 function viewScores(){};
