@@ -7,71 +7,88 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fun Times With Coding Quiz!</title>
     <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="./assets/css/style.css"> 
+    <link rel="stylesheet" href="./assets/css/style.css">
 </head>
 
 <body>
 
-    <main class="d-flex min-vh-100 position-relative container-fluid">
+    <main class="d-flex max-vw-100 min-vh-100 position-relative container-fluid">
 
         <div id="scoreBarContainer" class="container min-vw-100 position-absolute">
-            
+
             <section id="scoreBar" class="border border-primary">
-                
+
                 <div class="row border border-secondary">
-                    
+
                     <div id="scoreView" class="col-6 border border-success">
-                        
+
                         <button id="viewScoresButton" type="button">VIEW HIGH SCORES</button>
-                    
-                    </div>
-                    
-                    <div id="timerSpace" class="col-6 border border-danger">
-                        
-                        <span>TIME: </span>
-                        
-                        <div id="timer" class="float-right"></div>
 
                     </div>
-                
+
+                    <div id="timerSpace" class="col-6 clear-right border border-danger">
+
+                        <span>TIME: </span>
+
+                        <div id="timer" class="float-right "></div>
+
+                    </div>
+
                 </div>
-            
+
             </section>
-        
+
         </div>
 
         <div id="quizSpaceContainer" class="container min-vw-100 position-absolute">
-            
+
             <section id="quizSpace" class="border border-warning my-auto">
-                
+
                 <div class="row">
-                    
+
                     <h1 id="quizTitle" class="border border-info">Code Quiz Challenge</h1>
-                    
+
                     <div id="quizArea" class="col-12 border border-dark"></div>
 
                     <div id="resultsArea" class="col-12 border border-light"></div>
-                    
+
+                    <div id="highScoresArea" class="col-12 border border-info">
+
+                        <table id="highScoresTable">
+
+                            <thead>
+                                <tr>
+                                    <th>USER</th>
+                                    <th>SCORE</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="table-body"></tbody>
+
+                        </table>
+
+                    </div>
+
                     <div id="quizControls" class="col border border-primary">
-                        
+
                         <button id="startButton" type="button" class="border border-secondary">START QUIZ</button>
 
-                        <button id="scoreButton" type="button "class="border border-secondary">SCORE</button>
+                        <button id="scoreButton" type="button " class="border border-secondary">SCORE</button>
 
                         <button id="submitButton" type="submit" class="border border-secondary">SUBMIT</button>
-                    
+
                     </div>
-                
+
                 </div>
-            
+
             </section>
-        
+
         </div>
-        
+
         <script src="./assets/js/script.js"></script>
-    
+
     </main>
 
 </body>
+
 </html>

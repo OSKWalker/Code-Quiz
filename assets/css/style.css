@@ -1,33 +1,47 @@
 /* Color scheme*/
-:root{
-    --darkest: black;
-    --darker: rgb(9, 9, 73);
-    --dark: blue;
-    --medium: cornflowerblue;
-    --light: lightblue;
-    --lighter: silver;
-    --lightest: ivory;
+:root {
+  --darkest: black;
+  --darker: rgb(9, 9, 73);
+  --dark: blue;
+  --medium: cornflowerblue;
+  --light: lightblue;
+  --lighter: silver;
+  --lightest: ivory;
 }
 
 /* Content highlight and background colors*/
-::selection{
-    background-color: var(--lighter);
-    color: var(--darkest);
+::selection {
+  background-color: var(--lighter);
+  color: var(--darkest);
 }
 
-html, body{
-    padding: 0;
-    margin: 0;
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background-color: var(--dark);
+  color: var(--lightest);
 }
 
-html{    
-    height: 100%;
+html {
+  height: 100%;
 }
 
-body{
-    min-height: 100%;
+body {
+  min-height: 100%;
+  min-width: 100%;
 }
 
-#quizSpaceContainer{
-    top: 15%;
+main {
+  width: 100vw;
+  height: 100vh;
+}
+
+.container {
+  display: flex;
+  position: relative;
+}
+
+#quizSpaceContainer {
+  top: 15%;
 }
