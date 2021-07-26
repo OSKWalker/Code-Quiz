@@ -8,6 +8,7 @@ const resultsAreaEl = document.getElementById("resultsArea");
 const highScoresAreaEl = document.getElementById("highScoresArea");
 const highScoresTableEl = document.getElementById("highScoresTable");
 const tableBodyEl = document.getElementById("table-body");
+const userInputEl = document.getElementById("userInitials");
 const startButtonEl = document.getElementById("startButton");
 const scoreButtonEl = document.getElementById("scoreButton");
 const submitButtonEl = document.getElementById("submitButton");
@@ -317,6 +318,16 @@ function hideHighScoresArea() {
   highScoresAreaEl.style.display = "none";
 }
 
+// Display the user input field
+function showUserInput() {
+  userInputEl.style.display = "initial";
+}
+
+// Hide the user input field
+function hideUserInput() {
+  userInputEl.style.display = "none";
+}
+
 // Display the start button
 function showStartButton() {
   startButtonEl.style.display = "initial";
@@ -447,7 +458,7 @@ function viewScores() {
     hideHighScoresArea();
     showQuizTitle();
     showQuizArea();
-  }/*
+  }
   var arr = [
     { userInitials: "AAA", userScore: 48 },
 
@@ -458,14 +469,14 @@ function viewScores() {
 
   tableBodyEl.innerHTML = "";
 
-  arr.forEach(function (score) {
+  highScores.forEach(function (score) {
     var tRow = document.createElement("tr");
     var tContent = `<td>${score.userInitials}</td><td>${score.userScore}</td>`;
     tRow.innerHTML = tContent;
     tableBodyEl.appendChild(tRow);
   });
 
-  //highScoresTableEl*/
+  //highScoresTableEl
 }
 
 // Function to view scorebar
@@ -493,22 +504,16 @@ function showScores() {
   scoreText.setAttribute("style", "font-weight: bold");
   resultsAreaEl.appendChild(scoreText);
 
-  var arr = [
-    { userInitials: "AAA", userScore: 48 },
-
-    { userInitials: "MMM", userScore: 36 },
-
-    { userInitials: "ZZZ", userScore: 24 },
-  ];
-
   tableBodyEl.innerHTML = "";
 
-  arr.forEach(function (score) {
+  highScores.forEach(function (score) {
     var tRow = document.createElement("tr");
     var tContent = `<td>${score.userInitials}</td><td>${score.userScore}</td>`;
     tRow.innerHTML = tContent;
     tableBodyEl.appendChild(tRow);
   });
+
+  showUserInput();
 
   //highScoresTableEl
 
@@ -534,10 +539,15 @@ function saveScores(event) {
   while (resultsAreaEl.firstChild) {
     resultsAreaEl.removeChild(resultsAreaEl.firstChild);
   }
+
+  hideUserInput();
+  hideSubmitButton();
   setTimeout(() => {
     hideHighScoresArea();
     init();
   }, 3000);
+
+  console.log(userScore + "\n" + highScores.length);
 
 }
 
