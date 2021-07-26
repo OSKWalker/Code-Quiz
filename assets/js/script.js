@@ -15,198 +15,198 @@ const scoreButtonEl = document.getElementById("scoreButton");
 const submitButtonEl = document.getElementById("submitButton");
 const quizQuestions = [
   {
-    question: "Question 1?",
+    question: "Which of the following can be used to alter the text of an HTML element?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "element.innerText",
+      B: "element.textContent",
+      C: "element.innerHTML",
+      D: "All of the above",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "All of the above",
   },
 
   {
-    question: "Question 2?",
+    question: "Which tool can you use to ensure code quality?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "RequireJS",
+      B: "EnsureQual",
+      C: "ESLint",
+      D: "JQuery",
     },
 
-    correctAnswer: "Answer B",
+    correctAnswer: "ESLint",
   },
 
   {
-    question: "Question 3?",
+    question: "Which of the following is a function declaration?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "function declaration();",
+      B: "function declaration(){};",
+      C: "var declaration = function();",
+      D: "None of the above",
     },
 
-    correctAnswer: "Answer B",
+    correctAnswer: "function declaration(){};",
   },
 
   {
-    question: "Question 4?",
+    question: "What is the greatest index value of an array with a length of N?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "N+1",
+      B: "N",
+      C: "N-1",
+      D: "N+=1",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "N-1",
   },
 
   {
-    question: "Question 5?",
+    question: "What is the proper syntax for calling a function?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "call aFunction();",
+      B: "a.callFunction();",
+      C: "aFunction();",
+      D: "call function aFunction();",
     },
 
-    correctAnswer: "Answer C",
+    correctAnswer: "aFunction();",
   },
 
   {
-    question: "Question 6?",
+    question: "Which HTML tag is used for JavaScript?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "<script>",
+      B: "<head>",
+      C: "<js>",
+      D: "<javascript>",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "<script>",
   },
 
   {
-    question: "Question 7?",
+    question: "Which of the following will return true?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "'0'=== 0",
+      B: "0 == '0'",
+      C: "let x = 0",
+      D: "0 || 0",
     },
 
-    correctAnswer: "Answer D",
+    correctAnswer: "0 == '0'",
   },
 
   {
-    question: "Question 8?",
+    question: "Which of these is a JavaScript package manager?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "npm",
+      B: "TypeScript",
+      C: "Node.js",
+      D: "Bootstrap",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "npm",
   },
 
   {
-    question: "Question 9?",
+    question: "Which of the following is another name for a function expression?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "function declaration",
+      B: "function literal",
+      C: "hoisted function",
+      D: "syntactic function",
     },
 
-    correctAnswer: "Answer B",
+    correctAnswer: "function literal",
   },
 
   {
-    question: "Question 10?",
+    question: "Which command forces a function to end?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "escape",
+      B: "return",
+      C: "stop",
+      D: "abort",
     },
 
-    correctAnswer: "Answer B",
+    correctAnswer: "return",
   },
 
   {
-    question: "Question 11?",
+    question: "What is the proper syntax of a for loop?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "for(var i=0; i<arr.length; i++){};",
+      B: "for(var i=0, i<arr.length, i++){};",
+      C: "for(i=arr.length, i++){};",
+      D: "for(var i=0, i<=arr.length; i++){};",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "for(var i=0; i<arr.length; i++){};",
   },
 
   {
-    question: "Question 12?",
+    question: "What is the syntax for an array?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "var arr = (x,y);",
+      B: "let arr = [{x,y}];",
+      C: "var arr = {x,y};",
+      D: "let arr = [x,y];",
     },
 
-    correctAnswer: "Answer D",
+    correctAnswer: "let arr = [x,y];",
   },
 
   {
-    question: "Question 13?",
+    question: "To correctly place a JavaScript, insert it in which section?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "The <head> section",
+      B: "The <header> section",
+      C: "Either the <head> or <body> section",
+      D: "The <body> section",
     },
 
-    correctAnswer: "Answer B",
+    correctAnswer: "Either the <head> or <body> section",
   },
 
   {
-    question: "Question 14?",
+    question: "Single-line comments use which markup in javaScript?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "//",
+      B: "/*",
+      C: "<!--",
+      D: "</",
     },
 
-    correctAnswer: "Answer A",
+    correctAnswer: "//",
   },
 
   {
-    question: "Question 15?",
+    question: "Who invented JavaScript?",
 
     answers: {
-      A: "Answer A",
-      B: "Answer B",
-      C: "Answer C",
-      D: "Answer D",
+      A: "Brendan Eich",
+      B: "Albert Einstein",
+      C: "Sheryl Crow",
+      D: "Steve Jobs",
     },
 
-    correctAnswer: "Answer C",
+    correctAnswer: "Brendan Eich",
   },
 ];
 
