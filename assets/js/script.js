@@ -258,7 +258,7 @@ function startQuiz() {
 
   showTime();
 
-  secondsLeft = 5;
+  secondsLeft = 45;
 
   showQuizArea();
 
@@ -380,6 +380,7 @@ function getQuestion() {
     var answerSpace = document.createElement("ul");
     var choice = document.createElement("li");
     var selection = document.createElement("button");
+    selection.setAttribute("class", "button")
 
     selection.addEventListener("click", function (event) {
       event.preventDefault();
@@ -406,17 +407,15 @@ function getQuestion() {
 }
 
 // Check for correct answer; Take time if incorrect, Add time if correct
-function checkAnswer(userSelection) {
+function checkAnswer(userSelection, selected) {
   var correct = quizQuestions[questionIndex].correctAnswer;
   var userAlert = document.createElement("h1");
 
   if (userSelection !== correct) {
     userAlert.textContent = "INCORRECT!";
-
     secondsLeft -= 4;
   } else {
     userAlert.textContent = "CORRECT!";
-
     secondsLeft += 2;
   }
 
@@ -463,11 +462,10 @@ function viewScores() {
     showQuizTitle();
     showQuizArea();
   }
-  console.log(typeof highscores)
+
   if (highScores == null) {
     populateDefaultScores();
   } else {
-    console.log(highScores.length)
     populateHighScores();
   }
 }

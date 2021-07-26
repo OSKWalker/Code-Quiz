@@ -12,27 +12,27 @@
 
 <body>
 
-    <main class="d-flex max-vw-100 min-vh-100 position-relative container-fluid">
+    <main class="container">
 
-        <div id="scoreBarContainer" class="container min-vw-100 position-absolute">
+        <div id="scoreBarContainer" class="container">
 
-            <section id="scoreBar" class="border border-primary">
+            <section id="scoreBar">
 
-                <div class="row border border-secondary">
+                <div class="center">
 
-                    <div id="scoreView" class="col-6 border border-success">
+                    <div id="scoreView" class="">
 
-                        <button id="viewScoresButton" type="button">HIGH SCORES</button>
+                        <button id="viewScoresButton" type="button" class="button">HIGH SCORES</button>
 
-                        <button id="clearScoresButton" type="button">CLEAR SCORES</button>
+                        <button id="clearScoresButton" type="button" class="button">CLEAR SCORES</button>
 
                     </div>
 
-                    <div id="timerSpace" class="col-6 clear-right border border-danger">
+                    <div id="timerSpace" class="">
 
                         <span>TIME: </span>
 
-                        <div id="timer" class="float-right "></div>
+                        <div id="timer" class=""></div>
 
                     </div>
 
@@ -42,19 +42,19 @@
 
         </div>
 
-        <div id="quizSpaceContainer" class="container min-vw-100 position-absolute">
+        <div id="quizSpaceContainer" class="container">
 
-            <section id="quizSpace" class="border border-warning my-auto">
+            <section id="quizSpace" class="">
 
                 <div class="row">
 
-                    <h1 id="quizTitle" class="border border-info">Code Quiz Challenge</h1>
+                    <h1 id="quizTitle" class="">Code Quiz Challenge</h1>
 
-                    <div id="quizArea" class="col-12 border border-dark"></div>
+                    <div id="quizArea" class=""></div>
 
-                    <div id="resultsArea" class="col-12 border border-light"></div>
+                    <div id="resultsArea" class=""></div>
 
-                    <div id="highScoresArea" class="col-12 border border-info">
+                    <div id="highScoresArea" class="">
 
                         <table id="highScoresTable">
 
@@ -73,19 +73,25 @@
 
                     </div>
 
-                    <div id="quizControls" class="col border border-primary">
+                    <div id="quizControls" class="">
 
-                        <button id="startButton" type="button" class="border border-secondary">START QUIZ</button>
+                        <button id="startButton" type="button" class="button">START QUIZ</button>
 
-                        <button id="scoreButton" type="button " class="border border-secondary">SCORE</button>
+                        <button id="scoreButton" type="button " class="button">SCORE</button>
 
-                        <button id="submitButton" type="submit" class="border border-secondary">SUBMIT</button>
+                        <button id="submitButton" type="submit" class="button">SUBMIT</button>
 
                     </div>
 
                 </div>
 
             </section>
+
+        </div>
+
+        <div id="footerContainer" class="container">
+
+            <footer>© 2021, O'Mar Walker. All rights reserved.</footer>
 
         </div>
 
