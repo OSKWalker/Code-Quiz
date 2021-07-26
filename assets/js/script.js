@@ -208,7 +208,8 @@ const quizQuestions = [
   },
 ];
 
-let highScores = [];
+let highScores = JSON.parse(localStorage.getItem("scoreHistory"));
+
 let secondsLeft = 0;
 let questionIndex = 0;
 let answer = false;
@@ -407,7 +408,7 @@ function checkAnswer(userSelection) {
 
   userAlert.setAttribute(
     "style",
-    "font-size: 48px font-weight: bold font-style: italics opacity: 0 transition: 2s"
+    "font-size: 48px font-weight: bold font-style: italics transition: 0.25s"
   );
 
   resultsAreaEl.appendChild(userAlert);
@@ -446,7 +447,7 @@ function viewScores() {
     hideHighScoresArea();
     showQuizTitle();
     showQuizArea();
-  }
+  }/*
   var arr = [
     { userInitials: "AAA", userScore: 48 },
 
@@ -464,7 +465,7 @@ function viewScores() {
     tableBodyEl.appendChild(tRow);
   });
 
-  //highScoresTableEl
+  //highScoresTableEl*/
 }
 
 // Function to view scorebar
@@ -513,39 +514,31 @@ function showScores() {
 
   showSubmitButton();
 }
-
-// Function to save scores
-function saveScores() {
-  /*
 // Capture contents of localstorage
 
-let savedScores = JSON.parse(localStorage.getItem("scoreHistory"));
-if(savedScores == null)
-{
-    savedScores = [];
-}
+// Function to save scores
+function saveScores(event) {
+  event.preventDefault();
+  let userScore = {
+    userInitials: document.getElementById("userInitials").value.trim(),
+    userScore: secondsLeft
+  };
+  if (highScores == null) {
+    highScores = [];
+  }
 
-// Saves the Score
+  highScores.push(userScore);
+  localStorage.setItem("scoreHistory", JSON.stringify(highScores));
 
-//save score when prompted
-function saveScore(event){
-    event.preventDefault();
-    var userScore = {
-        userInitial: document.querySelector("#user-initials").value.trim(),
-        userScore: secondsLeft
-    };
-    savedScores.push(userScore);
-    localStorage.setItem("scoreHistory", JSON.stringify(savedScores));
-}*/
-  setTimeout(() => {
-    hideHighScoresArea();
-  }, 5000);
 
   while (resultsAreaEl.firstChild) {
     resultsAreaEl.removeChild(resultsAreaEl.firstChild);
   }
+  setTimeout(() => {
+    hideHighScoresArea();
+    init();
+  }, 3000);
 
-  init();
 }
 
 // Adds requisite event listeners
