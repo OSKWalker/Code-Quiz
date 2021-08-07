@@ -1,104 +1,88 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fun Times With Coding Quiz!</title>
-    <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/style.css">
-</head>
+    <link rel="stylesheet" href="./assets/css/reset.css" />
+    <link rel="stylesheet" href="./assets/css/style.css" />
+  </head>
 
-<body>
-
+  <body>
     <main class="container">
+      <div id="scoreBarContainer" class="container">
+        <section id="scoreBar">
+          <div class="center">
+            <div id="scoreView" class="">
+              <button id="viewScoresButton" type="button" class="button">
+                HIGH SCORES
+              </button>
 
-        <div id="scoreBarContainer" class="container">
+              <button id="clearScoresButton" type="button" class="button">
+                CLEAR SCORES
+              </button>
+            </div>
 
-            <section id="scoreBar">
+            <div id="timerSpace" class="">
+              <span>TIME: </span>
 
-                <div class="center">
+              <div id="timer" class=""></div>
+            </div>
+          </div>
+        </section>
+      </div>
 
-                    <div id="scoreView" class="">
+      <div id="quizSpaceContainer" class="container">
+        <section id="quizSpace" class="">
+          <div class="row">
+            <h1 id="quizTitle" class="">Code Quiz Challenge</h1>
 
-                        <button id="viewScoresButton" type="button" class="button">HIGH SCORES</button>
+            <div id="quizArea" class=""></div>
 
-                        <button id="clearScoresButton" type="button" class="button">CLEAR SCORES</button>
+            <div id="resultsArea" class=""></div>
 
-                    </div>
+            <div id="highScoresArea" class="">
+              <table id="highScoresTable">
+                <thead>
+                  <tr>
+                    <th>USER</th>
+                    <th>SCORE</th>
+                  </tr>
+                </thead>
 
-                    <div id="timerSpace" class="">
+                <tbody id="table-body"></tbody>
+              </table>
 
-                        <span>TIME: </span>
+              <input
+                type="text"
+                id="userInitials"
+                placeholder="Enter Your Initials Here!"
+              />
+            </div>
 
-                        <div id="timer" class=""></div>
+            <div id="quizControls" class="">
+              <button id="startButton" type="button" class="button">
+                START QUIZ
+              </button>
 
-                    </div>
+              <button id="scoreButton" type="button " class="button">
+                SCORE
+              </button>
 
-                </div>
+              <button id="submitButton" type="submit" class="button">
+                SUBMIT
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
 
-            </section>
+      <div id="footerContainer" class="container">
+        <footer>© 2021, O'Mar Walker. All rights reserved.</footer>
+      </div>
 
-        </div>
-
-        <div id="quizSpaceContainer" class="container">
-
-            <section id="quizSpace" class="">
-
-                <div class="row">
-
-                    <h1 id="quizTitle" class="">Code Quiz Challenge</h1>
-
-                    <div id="quizArea" class=""></div>
-
-                    <div id="resultsArea" class=""></div>
-
-                    <div id="highScoresArea" class="">
-
-                        <table id="highScoresTable">
-
-                            <thead>
-                                <tr>
-                                    <th>USER</th>
-                                    <th>SCORE</th>
-                                </tr>
-                            </thead>
-
-                            <tbody id="table-body"></tbody>
-
-                        </table>
-
-                        <input type="text" id="userInitials" placeholder="Enter Your Initials Here!">
-
-                    </div>
-
-                    <div id="quizControls" class="">
-
-                        <button id="startButton" type="button" class="button">START QUIZ</button>
-
-                        <button id="scoreButton" type="button " class="button">SCORE</button>
-
-                        <button id="submitButton" type="submit" class="button">SUBMIT</button>
-
-                    </div>
-
-                </div>
-
-            </section>
-
-        </div>
-
-        <div id="footerContainer" class="container">
-
-            <footer>© 2021, O'Mar Walker. All rights reserved.</footer>
-
-        </div>
-
-        <script src="./assets/js/script.js"></script>
-
+      <script src="./assets/js/script.js"></script>
     </main>
-
-</body>
-
+  </body>
 </html>

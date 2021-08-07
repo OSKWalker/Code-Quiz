@@ -39,7 +39,7 @@ main {
   background-color: var(--darkest);
 }
 
-.center{
+.center {
   justify-content: center;
   align-content: center;
 }
@@ -54,7 +54,7 @@ section {
   border: 5px solid var(--light);
 }
 
-#scoreBarContainer{
+#scoreBarContainer {
   justify-self: flex-start;
   height: 15%;
   width: 100vw;
@@ -65,13 +65,13 @@ section {
   min-width: 100vw;
 }
 
-#footerContainer{
+#footerContainer {
   align-self: flex-end;
   height: 10%;
-  width: 100vw;  
+  width: 100vw;
 }
 
-div .button{
+div .button {
   background-color: var(--medium);
   display: inline-block;
   padding: 5px 10px;
@@ -84,7 +84,7 @@ div .button{
   box-shadow: 0 5px var(--lighter);
 }
 
-li .button{  
+li .button {
   background-color: var(--light);
   display: inline-block;
   padding: 5px 10px;

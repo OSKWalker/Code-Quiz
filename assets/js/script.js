@@ -15,7 +15,8 @@ const scoreButtonEl = document.getElementById("scoreButton");
 const submitButtonEl = document.getElementById("submitButton");
 const quizQuestions = [
   {
-    question: "Which of the following can be used to alter the text of an HTML element?",
+    question:
+      "Which of the following can be used to alter the text of an HTML element?",
 
     answers: {
       A: "element.innerText",
@@ -54,7 +55,8 @@ const quizQuestions = [
   },
 
   {
-    question: "What is the greatest index value of an array with a length of N?",
+    question:
+      "What is the greatest index value of an array with a length of N?",
 
     answers: {
       A: "N+1",
@@ -119,7 +121,8 @@ const quizQuestions = [
   },
 
   {
-    question: "Which of the following is another name for a function expression?",
+    question:
+      "Which of the following is another name for a function expression?",
 
     answers: {
       A: "function declaration",
@@ -380,7 +383,7 @@ function getQuestion() {
     var answerSpace = document.createElement("ul");
     var choice = document.createElement("li");
     var selection = document.createElement("button");
-    selection.setAttribute("class", "button")
+    selection.setAttribute("class", "button");
 
     selection.addEventListener("click", function (event) {
       event.preventDefault();
@@ -535,7 +538,7 @@ function showScores() {
 
   if (highScores == null) {
     highScores = [];
-  };
+  }
 
   highScores.forEach(function (score) {
     var tRow = document.createElement("tr");
@@ -556,9 +559,8 @@ function saveScores(event) {
   event.preventDefault();
   let userScore = {
     userInitials: document.getElementById("userInitials").value.trim(),
-    userScore: secondsLeft
+    userScore: secondsLeft,
   };
-
 
   highScores.push(userScore);
   localStorage.setItem("scoreHistory", JSON.stringify(highScores));
@@ -571,7 +573,7 @@ function transitionToStart() {
   populateHighScores();
   while (resultsAreaEl.firstChild) {
     resultsAreaEl.removeChild(resultsAreaEl.firstChild);
-  };
+  }
   hideUserInput();
   hideSubmitButton();
   setTimeout(() => {
